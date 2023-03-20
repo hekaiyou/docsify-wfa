@@ -1,5 +1,44 @@
 # Python 系统 {docsify-ignore}
 
+## os.path.join()
+
+把目录和文件名合成一个路径。
+
+```python
+os.path.join(path1[, path2[, ...]])
+```
+
+<!-- tabs:start -->
+
+#### **参数**
+
+| 名称 | 描述 |
+| ---- | ---- |
+| path1[, path2[, ...]] | 目录或文件名 |
+
+#### **返回值**
+
+符合当前系统要求的路径。
+
+<!-- tabs:end -->
+
+<!-- tabs:start -->
+
+#### **代码**
+
+```python
+import os
+print(os.path.join('root', 'test', 'runoob.txt'))
+```
+
+#### **输出结果**
+
+```powershell
+root\test\runoob.txt
+```
+
+<!-- tabs:end -->
+
 ## os.getcwd()
 
 返回当前工作目录。
