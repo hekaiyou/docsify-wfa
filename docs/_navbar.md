@@ -1,4 +1,5 @@
 * [WeFastAPI](/)
+* [FastAPI](https://fastapi.tiangolo.com/zh/)
 * Python
   * [内置函数与方法](/python/basis/)
 * 模块演示
