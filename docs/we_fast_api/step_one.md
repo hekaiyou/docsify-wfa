@@ -54,8 +54,6 @@ INFO:     Uvicorn running on http://0.0.0.0:8083
 {"message":"Hello World"}
 ```
 
-## 交互式接口文档
-
 打开浏览器访问 [http://127.0.0.1:8083/docs/](http://127.0.0.1:8083/docs/) 路径, 将会看到 [Swagger UI](https://github.com/swagger-api/swagger-ui) API 文档:
 
 ![step_one_1.png](https://trilium.hekaiyou.top/static/image/step_one/step_one_1.png)
