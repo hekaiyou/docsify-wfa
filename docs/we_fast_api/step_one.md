@@ -58,4 +58,8 @@ INFO:     Uvicorn running on http://0.0.0.0:8083
 
 打开浏览器访问 [http://127.0.0.1:8083/docs/](http://127.0.0.1:8083/docs/) 路径, 将会看到 [Swagger UI](https://github.com/swagger-api/swagger-ui) API 文档:
 
+![step_one_1.png](https://trilium.hekaiyou.top/static/image/step_one/step_one_1.png)
+
 打开浏览器访问 [http://127.0.0.1:8083/redoc/](http://127.0.0.1:8083/redoc/) 路径, 将会看到 [ReDoc](https://github.com/Rebilly/ReDoc) API 文档:
+
+![step_one_2.png](https://trilium.hekaiyou.top/static/image/step_one/step_one_2.png)

@@ -1,3 +1,4 @@
+* [WeFastAPI 快速开始](/)
 * [WeFastAPI 第一步](/we_fast_api/step_one)
 * [WeFastAPI 模型设计](/we_fast_api/model_design)
 * [WeFastAPI 部署](/we_fast_api/deployment)
