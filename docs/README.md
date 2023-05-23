@@ -132,8 +132,8 @@ python main.py
 服务启动后, 可以访问以下文档和应用地址:
 
 - 通过 http://127.0.0.1:8083/ 访问基础 Web 站点
-- 通过 http://127.0.0.1:8083/docs/ 访问由 [Swagger UI](https://github.com/swagger-api/swagger-ui) API 文档
-- 通过 http://127.0.0.1:8083/redoc/ 访问由 [ReDoc](https://github.com/Rebilly/ReDoc) API 文档
+- 通过 http://127.0.0.1:8083/docs/ 访问由 [Swagger UI](https://github.com/swagger-api/swagger-ui) 生成的接口文档
+- 通过 http://127.0.0.1:8083/redoc/ 访问由 [ReDoc](https://github.com/Rebilly/ReDoc) 生成的接口文档
 
 ## 👀 预览
 
@@ -149,7 +149,7 @@ WORKDIR /workspace
 COPY . /workspace/
 RUN pip install -r requirements.txt
 # Build serve - Start
-# For example: RUN pip install -r apis/demo_serve/requirements.txt
+# For example: RUN pip install -r apis/my_module/requirements.txt
 # Build serve - End
 EXPOSE 8083
 CMD ["python", "main.py"]
