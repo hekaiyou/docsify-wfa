@@ -51,7 +51,7 @@ INFO:     Uvicorn running on http://0.0.0.0:8083
 根据上面终端输出的服务地址, 打开浏览器访问 [http://127.0.0.1:8083/api/my_module/items/open/](http://127.0.0.1:8083/api/my_module/items/open/) 路径, 将看到如下的 JSON 响应:
 
 ```json
-{"message":"Hello World"}
+{"message": "Hello World"}
 ```
 
 打开浏览器访问 [http://127.0.0.1:8083/docs/](http://127.0.0.1:8083/docs/) 路径, 将会看到 [Swagger UI](https://github.com/swagger-api/swagger-ui) API 文档:

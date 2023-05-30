@@ -4,7 +4,7 @@
 
 ## 🔮 教程
 
-- [WeFastAPI 模块结构](/we_fast_api/module_structure)
+- [WeFastAPI 第一步](/we_fast_api/step_one)
 
 ## 📦 安装
 
