@@ -72,6 +72,21 @@ async def read_hello(user: UserGlobal = Depends(read_me_info)):
     return {'message': f'Hello {user.username}'}
 ```
 
-而是通过访问 [轻前端站点](http://127.0.0.1:8083/) 创建角色、设置角色权限, 然后为用户分配角色。
+而是通过访问 [轻前端站点](http://127.0.0.1:8083/) 创建角色、设置角色权限, 然后为用户分配角色:
+
+访问接口路径, 将看到如下的 JSON 响应:
+
+- 用户没有登录
+   ```json
+   {"detail": "未认证"}
+   ```
+- 用户已完成登录, 未分配角色及其权限
+   ```json
+   {"detail": "无 第一个接口 权限"}
+   ```
+- 用户已完成登录, 已分配角色及其权限
+   ```json
+   {"message": "Hello admin"}
+   ```
 
 ## 白名单机制
