@@ -74,6 +74,8 @@ async def read_hello(user: UserGlobal = Depends(read_me_info)):
 
 而是通过访问 [轻前端站点](http://127.0.0.1:8083/) 创建角色、设置角色权限, 然后为用户分配角色:
 
+![permissions_1.png](https://trilium.hekaiyou.top/static/image/permissions/permissions_1.png)
+
 访问接口路径, 将看到如下的 JSON 响应:
 
 - 用户没有登录
