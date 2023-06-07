@@ -93,7 +93,7 @@ async def read_hello(user: UserGlobal = Depends(read_me_info)):
 
 ## 白名单机制
 
-以 “119.75.217.109” 这个 IP 地址为例:
+如果需要让某个网段或主机直接调用模块的有权限接口，可以通过配置白名单来实现，以 “119.75.217.109” 这个 IP 地址为例:
 
 - `TOKEN_EXEMPT_IP=["119.75.217"]` : 来自该网段的 IP 都放行
 - `TOKEN_EXEMPT_HOST=["119.75.217.109"]` : 来自该主机的 IP 都放行
