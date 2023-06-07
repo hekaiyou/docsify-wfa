@@ -92,3 +92,7 @@ async def read_hello(user: UserGlobal = Depends(read_me_info)):
    ```
 
 ## 白名单机制
+
+通过访问 [轻前端站点](http://127.0.0.1:8083/) 的:
+
+![permissions_2.png](https://trilium.hekaiyou.top/static/image/permissions/permissions_2.png)
