@@ -93,6 +93,11 @@ async def read_hello(user: UserGlobal = Depends(read_me_info)):
 
 ## 白名单机制
 
-通过访问 [轻前端站点](http://127.0.0.1:8083/) 的:
+在开发和测试阶段，可以通过访问 [轻前端站点](http://127.0.0.1:8083/) 的参数设置页面，选择 **模块 bases 相关变量** 来配置 *令牌豁免 IP 网络列表 (前面3段)* 或者 *令牌豁免 IP 主机列表 (完整4段)* 环境变量:
+
+| 环境变量 | 描述 | 类型 | 默认值 |
+| ------- | ------- | ------- | ------- |
+| TOKEN_EXEMPT_IP | 令牌豁免 IP 网络列表 (前面3段) | list | [] |
+| TOKEN_EXEMPT_HOST | 令牌豁免 IP 主机列表 (完整4段) | list | [] |
 
 ![permissions_2.png](https://trilium.hekaiyou.top/static/image/permissions/permissions_2.png)
