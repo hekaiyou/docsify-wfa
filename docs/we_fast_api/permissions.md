@@ -93,11 +93,25 @@ async def read_hello(user: UserGlobal = Depends(read_me_info)):
 
 ## 白名单机制
 
-在开发和测试阶段，可以通过访问 [轻前端站点](http://127.0.0.1:8083/) 的参数设置页面，选择 **模块 bases 相关变量** 来配置 *令牌豁免 IP 网络列表 (前面3段)* 或者 *令牌豁免 IP 主机列表 (完整4段)* 环境变量:
+以 “119.75.217.109” 这个 IP 地址为例:
+
+- `TOKEN_EXEMPT_IP=["119.75.217"]` : 来自该网段的 IP 都放行
+- `TOKEN_EXEMPT_HOST=["119.75.217.109"]` : 来自该主机的 IP 都放行
 
 | 环境变量 | 描述 | 类型 | 默认值 |
 | ------- | ------- | ------- | ------- |
 | TOKEN_EXEMPT_IP | 令牌豁免 IP 网络列表 (前面3段) | list | [] |
 | TOKEN_EXEMPT_HOST | 令牌豁免 IP 主机列表 (完整4段) | list | [] |
 
+在开发和测试阶段，可以通过访问 [轻前端站点](http://127.0.0.1:8083/) 的参数设置页面，选择 **模块 bases 相关变量** 来配置 *令牌豁免 IP 网络列表 (前面3段)* 或者 *令牌豁免 IP 主机列表 (完整4段)* 环境变量:
+
 ![permissions_2.png](https://trilium.hekaiyou.top/static/image/permissions/permissions_2.png)
+
+在发布阶段，则需要在 `apis/bases/.env` 配置文件中，直接配置 *TOKEN_EXEMPT_IP* 或者 *TOKEN_EXEMPT_HOST* 环境变量:
+
+```bash
+TOKEN_EXEMPT_IP=["119.75.217"]
+TOKEN_EXEMPT_HOST=["119.75.217.109"]
+```
+
+需要注意的是，为防止白名单访问篡改关键数据，限制了白名单不能访问除 `/api/bases/logs/` 以外的任何 `/api/bases/` 开头的接口。
