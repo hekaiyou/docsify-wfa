@@ -178,6 +178,54 @@ __del__方法被调用
 
 <!-- tabs:end -->
 
+## enumerate()
+
+将一个可遍历的数据对象（如列表、元组、字符串）组合为一个索引序列，同时列出数据和数据下标，一般用在 `for` 循环中。
+
+```python
+enumerate(sequence, [start=0])
+```
+
+<!-- tabs:start -->
+
+#### **参数**
+
+| 名称 | 描述 |
+| ---- | ---- |
+| sequence | 一个序列、迭代器或其他支持迭代对象 |
+| start | 下标起始位置的值 |
+
+#### **返回值**
+
+一个 `enumerate`（枚举）对象。
+
+<!-- tabs:end -->
+
+<!-- tabs:start -->
+
+#### **代码**
+
+```python
+seasons = ['Spring', 'Summer', 'Fall', 'Winter']
+print(f'默认下标从 0 开始: {list(enumerate(seasons))}')
+print(f'设置下标从 1 开始: {list(enumerate(seasons, start=1))}')
+for i, element in enumerate(seasons):
+    print(f'下标: {i}, 数据: {element}')
+```
+
+#### **输出结果**
+
+```powershell
+默认下标从 0 开始: [(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]
+设置下标从 1 开始: [(1, 'Spring'), (2, 'Summer'), (3, 'Fall'), (4, 'Winter')]
+下标: 0, 数据: Spring
+下标: 1, 数据: Summer
+下标: 2, 数据: Fall
+下标: 3, 数据: Winter
+```
+
+<!-- tabs:end -->
+
 ## isinstance()
 
 判断一个对象是否是一个已知的类型，与 `type()` 的区别：
