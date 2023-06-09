@@ -269,6 +269,54 @@ print('列表长度:', len(list_1))
 
 <!-- tabs:end -->
 
+## map()
+
+为参数 `iterable` 中的每一个元素调用 `function` 函数，返回由每次 `function` 函数返回值组成的新列表。
+
+```python
+map(function, iterable, ...)
+```
+
+<!-- tabs:start -->
+
+#### **参数**
+
+| 名称 | 描述 |
+| ---- | ---- |
+| function | 函数 |
+| iterable | 一个或多个序列 |
+
+#### **返回值**
+
+由每次 `function` 函数返回值组成的新列表。
+
+<!-- tabs:end -->
+
+<!-- tabs:start -->
+
+#### **代码**
+
+```python
+def square(x):
+    return x ** 2  # 计算平方数
+
+maped = map(square, [1, 2, 3, 4, 5])
+print(f'返回一个对象: {maped}')
+print(f'对象转换为列表: {list(maped)}')
+maped2 = list(map(lambda x: x ** 2, [1, 2, 3, 4, 5]))
+print(f'使用 lambda 匿名函数: {maped2}')
+```
+
+#### **输出结果**
+
+```powershell
+返回一个对象: <map object at 0x00000277194C5700>
+对象转换为列表: [1, 4, 9, 16, 25]
+使用 lambda 匿名函数: [1, 4, 9, 16, 25]
+```
+
+<!-- tabs:end -->
+
 ## slicing
 
 利用索引对序列数据（列表、元组、字符串等）进行切片。
@@ -478,6 +526,53 @@ with open('test.txt', 'a', encoding='UTF-8') as f:
 36
 25
 14
+```
+
+<!-- tabs:end -->
+
+## zip()
+
+将可迭代对象中对应的元素打包成一个个元组，然后返回由这些元组组成的可迭代对象。
+
+```python
+zip([iterable, ...])
+```
+
+<!-- tabs:start -->
+
+#### **参数**
+
+| 名称 | 描述 |
+| ---- | ---- |
+| iterable | 一个或多个迭代对象 |
+
+#### **返回值**
+
+由元组组成的可迭代对象，`zip(*)` 则相反，返回二维矩阵式。
+
+<!-- tabs:end -->
+
+<!-- tabs:start -->
+
+#### **代码**
+
+```python
+a = [1, 2, 3]
+b = [4, 5, 6]
+c = [4, 5, 6, 7, 8]
+zipped = zip(a, b, c)
+print(f'返回一个对象: {zipped}')
+print(f'对象转换为列表: {list(zipped)}')
+d = ['flower', 'flow', 'flight']
+print(f'zip(*)返回二维矩阵式: {list(zip(*d))}')
+```
+
+#### **输出结果**
+
+```powershell
+返回一个对象: <zip object at 0x000002771973E040>
+对象转换为列表: [(1, 4, 4), (2, 5, 5), (3, 6, 6)]
+zip(*)返回二维矩阵式: [('f', 'f', 'f'), ('l', 'l', 'l'), ('o', 'o', 'i'), ('w', 'w', 'g')]
 ```
 
 <!-- tabs:end -->
