@@ -482,14 +482,18 @@ list.sort([func])
 
 ```python
 list1 = ['Google', 'You', 'Taobao', 'Baidu']
+list2 = [1, 2, 3, 2, 5, 6]
 list1.sort()
-print("列表排序后: ", list1)
+list2.sort()
+print("列表1排序后: ", list1)
+print("列表2排序后: ", list2)
 ```
 
 #### **输出结果**
 
 ```powershell
-列表排序后:  ['Baidu', 'Google', 'You', 'Taobao']
+列表1排序后:  ['Baidu', 'Google', 'You', 'Taobao']
+列表2排序后:  [1, 2, 2, 3, 5, 6]
 ```
 
 <!-- tabs:end -->
