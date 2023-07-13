@@ -1,6 +1,7 @@
 * [WeFastAPI 快速开始](/)
 * [WeFastAPI 第一步](/we_fast_api/step_one)
 * [WeFastAPI 权限管理](/we_fast_api/permissions)
+* [WeFastAPI 视图模板](/we_fast_api/views_template)
 * [WeFastAPI 模型设计](/we_fast_api/model_design)
 * [WeFastAPI 部署](/we_fast_api/deployment)
 * [WeFastAPI 执行端](/we_fast_api/execution_side)

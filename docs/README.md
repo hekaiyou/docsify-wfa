@@ -5,6 +5,8 @@
 ## 🔮 教程
 
 - [WeFastAPI 第一步](/we_fast_api/step_one)
+- [WeFastAPI 权限管理](/we_fast_api/permissions)
+- [WeFastAPI 视图模板](/we_fast_api/views_template)
 
 ## 📦 安装
 
