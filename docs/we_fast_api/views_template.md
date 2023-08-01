@@ -28,7 +28,7 @@ my_module/
 
 ### 路由配置
 
-`view_url.py`
+前面创建的 `view_url.py` 是路由配置文件, 这里创建了路由函数 `page_my_module_items` 用于返回 `my_module/items.html` 模板文件:
 
 ```python
 from apis.templating import templates
@@ -42,6 +42,8 @@ router = APIRouter(prefix='/my_module', )
 async def page_my_module_items(request: dict = Depends(get_view_request)):
     return templates.TemplateResponse('my_module/items.html', {**request})
 ```
+
+函数 `page_my_module_items` 的参数 `request` 是一个字典, 包含 `Request` 类型的 `request` 键值与 `bases` 模块环境变量的 `settings` 键值。
 
 ### 模板内容
 
