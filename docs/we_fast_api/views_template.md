@@ -28,7 +28,7 @@ my_module/
 
 ### 路由配置
 
-前面创建的 `view_url.py` 是路由配置文件, 这里创建了路由函数 `page_my_module_items` 用于返回 `my_module/items.html` 模板文件:
+编辑 `view_url.py` 文件, 这个文件是路由配置文件, 这里创建了路由函数 `page_my_module_items` 用于返回 `my_module/items.html` 模板文件:
 
 ```python
 from apis.templating import templates
@@ -47,7 +47,7 @@ async def page_my_module_items(request: dict = Depends(get_view_request)):
 
 ### 模板内容
 
-`templates/my_module/items.html`
+编辑 `templates/my_module/items.html` 文件, 这个文件是使用 [Jinja2](https://docs.jinkan.org/docs/jinja2/) 模板语言编写的模板页面, 以这个页面为例, 它可以访问函数 `page_my_module_items` 返回的 `{**request}` 字典内容:
 
 ```html
 {% extends 'core/navigation.html' %}
@@ -70,12 +70,18 @@ async def page_my_module_items(request: dict = Depends(get_view_request)):
 {% endblock %}
 
 {% block javascript %}
-<!-- Javascript 脚本代码 -->
+<!-- JavaScript 脚本代码 -->
 <script>
     console.log('第一个脚本');
 </script>
 {% endblock %}
 ```
+
+打开浏览器访问 [http://127.0.0.1:8083/view/my_module/items/](http://127.0.0.1:8083/view/my_module/items/) 路径, 将会看到当前这个模板页面的显示效果:
+
+![views_template_1.png](https://trilium.hekaiyou.top/static/image/views_template/views_template_1.png)
+
+同时打开浏览器的控制台, 可以看到模板页面通过 **JavaScript** 脚本打印的字符串。
 
 ## 添加导航栏
 
