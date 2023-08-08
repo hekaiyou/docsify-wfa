@@ -18,6 +18,7 @@ my_module/
         templates/
             my_module/
                 items.html
+        view_navigation.py
         view_url.py
     __init__.py
     api_items.py
@@ -85,20 +86,12 @@ async def page_my_module_items(request: dict = Depends(get_view_request)):
 
 ## 添加导航栏
 
-`view_navigation.py`
+编辑 `view_navigation.py` 文件, 这个文件用于控制导航栏的菜单项, 其中 `view_navigation_bar` 是一个固定参数名, 框架启动时会自动读取这个字典。
 
-```bash
-my_module/
-    views/
-        templates/
-            my_module/
-                items.html
-        view_navigation.py
-        view_url.py
-    __init__.py
-    api_items.py
-    routing.py
-```
+- `path`: 页面访问路径
+- `permission`: 需要的权限列表, 空列表表示无权限, 只需登录即可访问
+- `text`: 菜单项名称
+- `weight`: 菜单项排序权重, 数值越大越靠前
 
 ```python
 view_navigation_bar = [
@@ -110,6 +103,12 @@ view_navigation_bar = [
     },
 ]
 ```
+
+打开浏览器访问 [http://127.0.0.1:8083/](http://127.0.0.1:8083/) 路径, 完成用户登录操作后进入首页, 就可以看到导航栏中出现上面配置的菜单项:
+
+![views_template_2.png](https://trilium.hekaiyou.top/static/image/views_template/views_template_2.png)
+
+每个模块的 `view_navigation.py` 文件单独维护, 框架会负责汇总全部模块的配置。
 
 ## 设置首页
 
