@@ -112,4 +112,10 @@ view_navigation_bar = [
 
 ## 设置首页
 
+在 [we-fast-api](https://github.com/hekaiyou/we-fast-api) 项目的前端页面中, 首页分为 **已登录** 和 **未登录** 两个主页路径, 分别处理用户登录前后的页面显示。
+
+通过访问 [轻前端站点](http://127.0.0.1:8083/) 的参数设置页面，选择 **模块 bases 相关变量** 来配置 *服务的主页路径 (已登录)* 或者 *服务的主页路径 (未登录)* 环境变量:
+
+![views_template_3.png](https://trilium.hekaiyou.top/static/image/views_template/views_template_3.png)
+
 ## 资源文件
