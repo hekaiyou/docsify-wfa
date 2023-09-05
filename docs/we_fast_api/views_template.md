@@ -118,4 +118,8 @@ view_navigation_bar = [
 
 ![views_template_3.png](https://trilium.hekaiyou.top/static/image/views_template/views_template_3.png)
 
+可以在同一个页面通过 `var c_username = Cookies.get('username');` 、 `var c_role = Cookies.get('role');` 或 `var c_full_name = Cookies.get('full_name');` 判断用户是否登录, 来显示不同的内容。
+
 ## 资源文件
+
+放在 `my_module/views/static/` 目录下的文件夹及其文件均可以被 *http://127.0.0.1:8083/static/my_module/...* 路径访问, 以 `bases` 模块的 `views/static/jquery-3.6.0/jquery.min.js` 文件为例, 打开浏览器访问 [http://127.0.0.1:8083/static/bases/jquery-3.6.0/jquery.min.js](http://127.0.0.1:8083/static/bases/jquery-3.6.0/jquery.min.js) 路径就可以查看这个文件。

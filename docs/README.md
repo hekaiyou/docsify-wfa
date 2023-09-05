@@ -115,9 +115,6 @@ APP_HOST=http://127.0.0.1:8083/
 | LDAP_AD_SEARCH_BASE | LDAP/AD 搜索用户的基础路径 | str | OU=OU,DC=Example,DC=LOCAL |
 | LDAP_AD_SEARCH_FILTER | LDAP/AD 搜索用户的过滤器 | str | (sAMAccountName={}) |
 | LDAP_AD_EMAIL_SUFFIX | LDAP/AD 企业邮箱后缀 | str | @example.com |
-| ENABLE_WECHAT_APP | 启用微信小程序支持 | bool | False |
-| WECHAT_APP_ID | 微信小程序唯一标识 | str | wxa123456 |
-| WECHAT_APP_SECRET | 微信小程序密钥 | str |  |
 
 ## ✨ 启动
 
@@ -146,7 +143,7 @@ python main.py
 框架中提供了一个基础的 `Dockerfile` 来构建镜像, 在框架根路径下创建 `Dockerfile` 文件:
 
 ```bash
-FROM python:3.10.11
+FROM python:3.10.12
 WORKDIR /workspace
 COPY . /workspace/
 RUN pip install -r requirements.txt
@@ -189,19 +186,21 @@ docker run -t -i -d -v /{LOCAL_DIR}/files:/workspace/files -v /{LOCAL_DIR}/logs:
 以下操作在 Ubuntu 系统下进行, 首先在框架根路径下创建自启动服务配置文件:
 
 ```shell
-vim demo.service
+vim {服务名称}.service
 ```
 
-编辑自启动服务配置文件 `demo.service` 的内容:
+编辑自启动服务配置文件 `{服务名称}.service` 的内容:
 
 ```shell
 [Unit]
-Description=demo
+Description={服务名称}
 
 [Service]
+User={运行用户}
+Group={运行群组}
 Type=simple
-WorkingDirectory=/{LOCAL_DIR}/demo
-ExecStart=/{LOCAL_DIR}/demo/venv/bin/python main.py
+WorkingDirectory=/{本地目录}/{服务根目录}
+ExecStart=/{本地目录}/{服务根目录}/venv/bin/python main.py
 Restart=on-failure
 RestartSec=30s
 
@@ -209,16 +208,18 @@ RestartSec=30s
 WantedBy=multi-user.target
 ```
 
-完成配置文件后, 就可以执行下列命令配置和管理服务:
+如果不设置 `User` 和 `Group` 则默认以 **root** 管理员权限运行, 完成配置文件后, 就可以执行下列命令配置和管理服务:
 
-- 注册服务: sudo systemctl enable /{LOCAL_DIR}/demo/demo.service
-- 启动服务: sudo systemctl start demo
+- 启用/注册服务: sudo systemctl enable /{本地目录}/{服务根目录}/{服务名称}.service
+- 启动服务: sudo systemctl start {服务名称}
+- 停止服务: sudo systemctl stop {服务名称}
 - 更新配置文件: sudo systemctl daemon-reload
-- 重新启动服务: sudo systemctl restart demo
-- 查看服务启动状态: sudo service demo status
-- 查看服务日志: sudo journalctl -u demo
+- 重新启动服务: sudo systemctl restart {服务名称}
+- 查看服务启动状态: sudo service {服务名称} status
+- 查看服务日志: sudo journalctl -u {服务名称}
 - 清理10秒之前的日志: sudo journalctl --vacuum-time=10s
-- 清理2小时之前的日志: sudo journactl --vacuum-time=2h
+- 清理2小时之前的日志: sudo journalctl --vacuum-time=2h
 - 清理7天之前的日志: sudo journalctl --vacuum-time=7d
+- 禁用/删除服务: sudo systemctl disable {服务名称}
 
 *此部署方式支持在 **参数设置** 菜单中动态变更环境变量。*
