@@ -86,6 +86,49 @@ math.ceil(math.pi):  4
 
 <!-- tabs:end -->
 
+## comb()
+
+返回不重复且无顺序地从 `n` 项中选择 `k` 项的方式总数。
+
+```python
+import math
+math.comb(n, k)
+```
+
+<!-- tabs:start -->
+
+#### **参数**
+
+| 名称 | 描述 |
+| ---- | ---- |
+| n | 正整数数字，可供选择的项数 |
+| k | 正整数数字，可供选择的可能性数量 |
+
+#### **返回值**
+
+一个整数，代表组合的总数。
+
+<!-- tabs:end -->
+
+<!-- tabs:start -->
+
+#### **代码**
+
+```python
+import math
+n = 7
+k = 5
+print(f'math.comb({n}, {k}): {math.comb(n, k)}')
+```
+
+#### **输出结果**
+
+```powershell
+math.comb(7, 5): 21
+```
+
+<!-- tabs:end -->
+
 ## exp()
 
 返回 `x` 的指数。
