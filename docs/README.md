@@ -7,12 +7,13 @@
 - [WeFastAPI 第一步](/we_fast_api/step_one)
 - [WeFastAPI 权限管理](/we_fast_api/permissions)
 - [WeFastAPI 视图模板](/we_fast_api/views_template)
+- [WeFastAPI 模型设计](/we_fast_api/model_design)
 
 ## 📦 安装
 
 ### 前置依赖
 
-- 开发语言: Python >= 3.7
+- 开发语言: Python >= 3.10
 - 数据库: MongoDB >= 4.0
 
 ### 操作步骤

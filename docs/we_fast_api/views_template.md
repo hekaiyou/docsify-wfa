@@ -15,6 +15,10 @@
 ```bash
 my_module/
     views/
+        static/
+            css/
+            image/
+            js/
         templates/
             my_module/
                 items.html
