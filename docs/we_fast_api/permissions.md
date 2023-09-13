@@ -56,6 +56,8 @@ async def read_hello(user: UserGlobal = Depends(read_me_info)):
    {"message": "Hello admin"}
    ```
 
+如果不是需求如此, 不建议将接口设置为无权限接口, 推荐将接口权限分配给包含 **Default** 角色在内的全部角色, 这样虽然麻烦但利于接口的管理。
+
 ## 有权限接口
 
 与前面两者不同, 常规的有权限接口不需要在访问路径上添加 *(但是应该避免使用 `open` 和 `free` 作为路径层级)* 内容:
