@@ -21,13 +21,14 @@ my_module/
     api_items.py
     models.py
     routing.py
+    validate.py
 ```
 
-提前在模块目录下创建好 `models.py` 和 `api_drawing_prompt.py` 两个文件。
+提前在模块目录下创建好 `models.py`、`validate.py` 和 `api_drawing_prompt.py` 两个文件。
 
-## 数据模型
+## 模型定义
 
-编辑 `my_module/models.py` 文件, 这个文件是当前模块的数据模型文件, 下面是以 “AI绘图提示词” 为例, 创建一个基础模型 `DrawingPromptBase` 及其读取模型 `DrawingPromptRead`, 。
+编辑 `my_module/models.py` 文件, 这个文件是当前模块的数据模型文件, 下面是以 “AI绘图提示词” 为例, 创建一个基础模型 `DrawingPromptBase` 及其读取模型 `DrawingPromptRead`, 代码如下：
 
 ```python
 from enum import Enum
@@ -53,6 +54,24 @@ class DrawingPromptRead(DrawingPromptBase):
     id: ObjId = Field(alias='_id', title='ID')
     create_time: datetime = datetime.utcnow()
     update_time: datetime = datetime.utcnow()
+```
+
+上面代码中的 `from core.validate import ObjId` 引入了框架封装的 `ObjId` 类型, 该类型用于定义模型的 **MongoDB ObjectId** 数据。
+
+## 数据校验
+
+apis/my_module/validate.py
+
+```python
+from core.database import doc_count
+from core.validate import ObjIdParams
+from .models import COL_DRAWING_PROMPT
+
+class DrawingPromptObjIdParams(ObjIdParams):
+
+    @classmethod
+    def validate_doc(cls, oid):
+        return doc_count(COL_DRAWING_PROMPT, {'_id': oid})
 ```
 
 ## 创建分页
@@ -153,20 +172,4 @@ router = APIRouter(
 
 router.include_router(api_items.router)
 router.include_router(api_drawing_prompt.router)
-```
-
-## AAA
-
-apis/my_module/validate.py
-
-```python
-from core.database import doc_count
-from core.validate import ObjIdParams
-from .models import COL_DRAWING_PROMPT
-
-class DrawingPromptObjIdParams(ObjIdParams):
-
-    @classmethod
-    def validate_doc(cls, oid):
-        return doc_count(COL_DRAWING_PROMPT, {'_id': oid})
 ```
