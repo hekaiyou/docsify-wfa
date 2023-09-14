@@ -28,7 +28,7 @@ my_module/
 
 ## 模型定义
 
-编辑 `my_module/models.py` 文件, 这个文件是当前模块的数据模型文件, 下面是以 “AI绘图提示词” 为例, 创建一个基础模型 `DrawingPromptBase` 及其读取模型 `DrawingPromptRead`, 代码如下：
+编辑 `my_module/models.py` 文件, 这个文件是当前模块的模型定义文件, 下面是以 “AI绘图提示词” 为例, 创建一个基础模型 `DrawingPromptBase` 及其读取模型 `DrawingPromptRead`, 代码如下：
 
 ```python
 from enum import Enum
@@ -60,7 +60,7 @@ class DrawingPromptRead(DrawingPromptBase):
 
 ## 数据校验
 
-apis/my_module/validate.py
+编辑 `my_module/validate.py` 文件, 这个文件是当前模块的数据校验文件, 下面创建了一个校验 “AI绘图提示词” 的 ID 请求参数有效性的 `DrawingPromptObjIdParams` 类, 代码如下：
 
 ```python
 from core.database import doc_count
@@ -74,7 +74,11 @@ class DrawingPromptObjIdParams(ObjIdParams):
         return doc_count(COL_DRAWING_PROMPT, {'_id': oid})
 ```
 
-## 创建分页
+上面代码中的 `from core.database import doc_count` 引入了框架封装的 `doc_count` 方法, 该方法用于查询 **MongoDB** 中指定集合的符合查询条件的文档数量。
+
+同时 `from core.validate import ObjIdParams` 引入框架封装的 `ObjIdParams` 类, 该类负责处理用户请求的 ID 字符串的基础校验, 并且通过重写 `validate_doc` 方法将 “AI绘图提示词” 的 ID 有效性校验代码写入。
+
+## 应用模型
 
 apis/my_module/api_drawing_prompt.py
 
@@ -157,7 +161,7 @@ async def read_drawing_prompt_page(
     return results
 ```
 
-## 应用模型
+## 配置路由
 
 apis/my_module/routing.py
 
