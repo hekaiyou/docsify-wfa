@@ -74,9 +74,7 @@ async def read_hello(user: UserGlobal = Depends(read_me_info)):
     return {'message': f'Hello {user.username}'}
 ```
 
-而是通过访问 [轻前端站点](http://127.0.0.1:8083/) 创建角色、设置角色权限, 然后为用户分配角色:
-
-![permissions_1.png](https://trilium.hekaiyou.top/static/image/permissions/permissions_1.png)
+而是通过访问 [轻前端站点](http://127.0.0.1:8083/) 创建角色、设置角色权限, 然后为用户分配角色。
 
 访问接口路径, 将看到如下的 JSON 响应:
 
@@ -105,9 +103,7 @@ async def read_hello(user: UserGlobal = Depends(read_me_info)):
 | TOKEN_EXEMPT_IP | 令牌豁免 IP 网络列表 (前面3段) | list | [] |
 | TOKEN_EXEMPT_HOST | 令牌豁免 IP 主机列表 (完整4段) | list | [] |
 
-在开发和测试阶段，可以通过访问 [轻前端站点](http://127.0.0.1:8083/) 的参数设置页面，选择 **模块 bases 相关变量** 来配置 *令牌豁免 IP 网络列表 (前面3段)* 或者 *令牌豁免 IP 主机列表 (完整4段)* 环境变量:
-
-![permissions_2.png](https://trilium.hekaiyou.top/static/image/permissions/permissions_2.png)
+在开发和测试阶段，可以通过访问 [轻前端站点](http://127.0.0.1:8083/) 的参数设置页面，选择 **模块 bases 相关变量** 来配置 *令牌豁免 IP 网络列表 (前面3段)* 或者 *令牌豁免 IP 主机列表 (完整4段)* 环境变量。
 
 在发布阶段，则需要在 `apis/bases/.env` 配置文件中，直接配置 *TOKEN_EXEMPT_IP* 或者 *TOKEN_EXEMPT_HOST* 环境变量:
 

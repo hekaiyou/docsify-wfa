@@ -82,9 +82,7 @@ async def page_my_module_items(request: dict = Depends(get_view_request)):
 {% endblock %}
 ```
 
-打开浏览器访问 [http://127.0.0.1:8083/view/my_module/items/](http://127.0.0.1:8083/view/my_module/items/) 路径, 将会看到当前这个模板页面的显示效果:
-
-![views_template_1.png](https://trilium.hekaiyou.top/static/image/views_template/views_template_1.png)
+打开浏览器访问 [http://127.0.0.1:8083/view/my_module/items/](http://127.0.0.1:8083/view/my_module/items/) 路径, 将会看到当前这个模板页面的显示效果。
 
 同时打开浏览器的控制台, 可以看到模板页面通过 **JavaScript** 脚本打印的字符串。
 
@@ -108,9 +106,7 @@ view_navigation_bar = [
 ]
 ```
 
-打开浏览器访问 [http://127.0.0.1:8083/](http://127.0.0.1:8083/) 路径, 完成用户登录操作后进入首页, 就可以看到导航栏中出现上面配置的菜单项:
-
-![views_template_2.png](https://trilium.hekaiyou.top/static/image/views_template/views_template_2.png)
+打开浏览器访问 [http://127.0.0.1:8083/](http://127.0.0.1:8083/) 路径, 完成用户登录操作后进入首页, 就可以看到导航栏中出现上面配置的菜单项。
 
 每个模块的 `view_navigation.py` 文件单独维护, 框架会负责汇总全部模块的配置。
 
@@ -118,9 +114,7 @@ view_navigation_bar = [
 
 在 [we-fast-api](https://github.com/hekaiyou/we-fast-api) 项目的前端页面中, 首页分为 **已登录** 和 **未登录** 两个主页路径, 分别处理用户登录前后的页面显示。
 
-通过访问 [轻前端站点](http://127.0.0.1:8083/) 的参数设置页面，选择 **模块 bases 相关变量** 来配置 *服务的主页路径 (已登录)* 或者 *服务的主页路径 (未登录)* 环境变量:
-
-![views_template_3.png](https://trilium.hekaiyou.top/static/image/views_template/views_template_3.png)
+通过访问 [轻前端站点](http://127.0.0.1:8083/) 的参数设置页面，选择 **模块 bases 相关变量** 来配置 *服务的主页路径 (已登录)* 或者 *服务的主页路径 (未登录)* 环境变量。
 
 可以在同一个页面通过 `var c_username = Cookies.get('username');` 、 `var c_role = Cookies.get('role');` 或 `var c_full_name = Cookies.get('full_name');` 判断用户是否登录, 来显示不同的内容。
 

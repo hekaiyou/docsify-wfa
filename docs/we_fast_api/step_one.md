@@ -54,20 +54,10 @@ INFO:     Uvicorn running on http://0.0.0.0:8083
 {"message": "Hello World"}
 ```
 
-打开浏览器访问 [http://127.0.0.1:8083/docs/](http://127.0.0.1:8083/docs/) 路径, 将会看到 [Swagger UI](https://github.com/swagger-api/swagger-ui) API 文档:
+打开浏览器访问 [http://127.0.0.1:8083/docs/](http://127.0.0.1:8083/docs/) 路径, 将会看到 [Swagger UI](https://github.com/swagger-api/swagger-ui) API 文档。
 
-![step_one_1.png](https://trilium.hekaiyou.top/static/image/step_one/step_one_1.png)
+打开浏览器访问 [http://127.0.0.1:8083/redoc/](http://127.0.0.1:8083/redoc/) 路径, 将会看到 [ReDoc](https://github.com/Rebilly/ReDoc) API 文档。
 
-打开浏览器访问 [http://127.0.0.1:8083/redoc/](http://127.0.0.1:8083/redoc/) 路径, 将会看到 [ReDoc](https://github.com/Rebilly/ReDoc) API 文档:
+打开浏览器访问 [http://127.0.0.1:8083/](http://127.0.0.1:8083/) 路径, 将会看到 [we-fast-api](https://github.com/hekaiyou/we-fast-api) 框架的轻前端站点。
 
-![step_one_2.png](https://trilium.hekaiyou.top/static/image/step_one/step_one_2.png)
-
-打开浏览器访问 [http://127.0.0.1:8083/](http://127.0.0.1:8083/) 路径, 将会看到 [we-fast-api](https://github.com/hekaiyou/we-fast-api) 框架的轻前端站点:
-
-![step_one_3.png](https://trilium.hekaiyou.top/static/image/step_one/step_one_3.png)
-
-使用初始的管理员账户登录后进入主页:
-
-![step_one_4.png](https://trilium.hekaiyou.top/static/image/step_one/step_one_4.png)
-
-这个轻前端站点是基于 [Pico.css](https://picocss.com/) 这个纯 CSS 框架搭建的。
+使用初始的管理员账户登录后进入主页, 这个轻前端站点是基于 [Pico.css](https://picocss.com/) 这个纯 CSS 框架搭建的。

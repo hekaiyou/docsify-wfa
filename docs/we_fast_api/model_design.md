@@ -80,7 +80,7 @@ class DrawingPromptObjIdParams(ObjIdParams):
 
 ## 应用模型
 
-apis/my_module/api_drawing_prompt.py
+编辑 `my_module/api_drawing_prompt.py` 文件,
 
 ```python
 from typing import Optional
