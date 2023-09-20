@@ -78,9 +78,11 @@ class DrawingPromptObjIdParams(ObjIdParams):
 
 同时 `from core.validate import ObjIdParams` 引入框架封装的 `ObjIdParams` 类, 该类负责处理用户请求的 ID 字符串的基础校验, 并且通过重写 `validate_doc` 方法将 “AI绘图提示词” 的 ID 有效性校验代码写入。
 
+*除了 ID 有效性校验, 还可以在这里写其他业务要求的判断条件, 比如某个参数的值是否已经被其他文档占用等。*
+
 ## 应用模型
 
-编辑 `my_module/api_drawing_prompt.py` 文件,
+编辑 `my_module/api_drawing_prompt.py` 文件, 这个文件是 “AI绘图提示词” 功能相关的接口响应处理文件, 完整代码如下：
 
 ```python
 from typing import Optional
@@ -160,6 +162,25 @@ async def read_drawing_prompt_page(
     )
     return results
 ```
+
+上面代码中的 `from core.database import doc_create, doc_delete, doc_update, doc_read, paginate_find` 引入了框架封装的以下方法：
+
+- `doc_create` 创建数据集合文档
+- `doc_delete` 删除数据集合文档
+- `doc_update` 更新数据集合文档
+- `doc_read` 读取数据集合文档
+- `paginate_find` 分页查询 DB 集合中的数据
+
+创建、删除、更新和读取数据的方法比较简单, 主要说明一下 `paginate_find` 分页查询方法, 使用该方法之前需要先导入 `from apis.bases.models import Paginate` (框架封装的分页数据模型) 和 `from core.dependencies import get_paginate_parameters` (框架封装的分页请求通用参数接收方法), 然后介绍一下分页方法需要的参数：
+
+- `collection` 集合名称或集合对象
+- `paginate_parameters` 通过 `get_paginate_parameters` 方法接收的分页请求通用参数
+- `query_content` 业务需要的其他分页查询参数
+  - `query_content['xxx'] = xxx` 完整匹配查询
+  - `query_content['xxx'] = {'$regex': xxx}` 包含匹配查询
+- `item_model` 分页响应中具体文档的数据读取模型
+
+同时上面的代码在 `delete_drawing_prompt`、 `update_drawing_prompt` 和 `read_drawing_prompt` 方法中, 调用了 `my_module/validate.py` 文件中的 `DrawingPromptObjIdParams` 验证类, 用来判断请求的 ID 是否合理。
 
 ## 配置路由
 
