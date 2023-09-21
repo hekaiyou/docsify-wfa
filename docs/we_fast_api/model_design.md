@@ -184,7 +184,7 @@ async def read_drawing_prompt_page(
 
 ## 配置路由
 
-apis/my_module/routing.py
+编辑 `apis/my_module/routing.py` 文件, 这个文件是当前模块的路由文件, 在原来的基础上引入 `api_drawing_prompt` 文件, 并将其路由对象 `api_drawing_prompt.router` 添加到模块的路由对象中：
 
 ```python
 from fastapi import APIRouter
@@ -198,3 +198,5 @@ router = APIRouter(
 router.include_router(api_items.router)
 router.include_router(api_drawing_prompt.router)
 ```
+
+启动服务, 打开浏览器访问 [http://127.0.0.1:8083/docs/](http://127.0.0.1:8083/docs/) API 文档, 就可以看到 `my_module/api_drawing_prompt.py` 文件中编写的 API 接口, 并调试这些接口。
