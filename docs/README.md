@@ -50,6 +50,18 @@
 | core | `.env` | MongoDB 连接等关键配置 (应用运行不可缺少的环境变量) |
 | bases | `apis/bases/.env` | [we-fast-api](https://github.com/hekaiyou/we-fast-api) 框架的基础环境变量 |
 
+如果想在 Ubuntu 系统下直接配置环境变量, 可以参考下面的操作指令：
+
+```shell
+$ vim ~/.bashrc
+export MONGO_DB_HOST=127.0.0.1
+export MONGO_DB_PORT=27017
+export MONGO_DB_NAME=test_database
+$ source ~/.bashrc
+```
+
+需要注意的是, 这样会覆盖掉优先级低的另外两种方式中的变量, 不利于多项目管理。
+
 ### .env
 
 在框架根路径下创建 `.env` 配置文件, 参考以下内容设置具体的环境变量:
@@ -209,6 +221,8 @@ RestartSec=30s
 WantedBy=multi-user.target
 ```
 
+*参数 `--workers` 指定的工作进程数需要同步在 **更新 BASES 设置** 页面编辑 **服务的工作进程总数 (workers)** 值, 因为多个进程时框架不知道你启动了多少个进程。*
+
 如果不设置 `User` 和 `Group` 则默认以 **root** 管理员权限运行, 完成配置文件后, 就可以执行下列命令配置和管理服务:
 
 - 启用/注册服务: sudo systemctl enable /{本地目录}/{服务根目录}/{服务名称}.service
@@ -223,4 +237,4 @@ WantedBy=multi-user.target
 - 清理7天之前的日志: sudo journalctl --vacuum-time=7d
 - 禁用/删除服务: sudo systemctl disable {服务名称}
 
-*此部署方式支持在 **参数设置** 菜单中动态变更环境变量。*
+目前只有此部署方式支持在 **参数设置** 菜单中动态变更环境变量。
