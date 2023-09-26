@@ -8,6 +8,7 @@
 - [WeFastAPI 权限管理](/we_fast_api/permissions)
 - [WeFastAPI 视图模板](/we_fast_api/views_template)
 - [WeFastAPI 模型设计](/we_fast_api/model_design)
+- [WeFastAPI 复杂任务](/we_fast_api/complex_tasks)
 
 ## 📦 安装
 
@@ -23,15 +24,30 @@
    git clone https://github.com/hekaiyou/we-fast-api.git demo
    ```
 2. 创建 Python3 版本的虚拟环境, 在终端执行:
-   ```shell
-   cd demo
-   # 如果 python 找不到命令可以尝试 python3 命令
-   python -m venv venv
-   # Linux下执行
-   source venv/bin/activate
-   # Windows下执行
-   # venv/Scripts/activate
-   ```
+   - 使用 **virtualenv** 命令
+      ```shell
+      cd demo
+      # 如果 python 找不到命令可以尝试 python3 命令
+      python -m venv venv
+      # Linux下执行
+      source venv/bin/activate
+      # Windows下执行
+      # venv/Scripts/activate
+      ```
+   - 使用 **virtualenvwrapper** 命令
+      ```shell
+      cd demo
+      # 创建新的虚拟环境
+      mkvirtualenv -p python3.10 venv_demo
+      # 退出当前虚拟环境
+      deactivate
+      # 进入指定的虚拟环境
+      workon venv_demo
+      # 查看已创建的虚拟环境
+      # lsvirtualenv
+      # 删除指定的虚拟环境
+      # rmvirtualenv venv_demo
+      ```
 3. 先安装 [we-fast-api](https://github.com/hekaiyou/we-fast-api) 框架依赖, 在终端执行:
    ```shell
    pip install -r requirements.txt
