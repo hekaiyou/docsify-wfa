@@ -9,6 +9,7 @@
 - [WeFastAPI 视图模板](/we_fast_api/views_template)
 - [WeFastAPI 模型设计](/we_fast_api/model_design)
 - [WeFastAPI 复杂任务](/we_fast_api/complex_tasks)
+- [WeFastAPI 简单视图](/we_fast_api/simple_view)
 
 ## 📦 安装
 

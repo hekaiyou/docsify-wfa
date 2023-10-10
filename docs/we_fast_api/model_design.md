@@ -24,7 +24,7 @@ my_module/
     validate.py
 ```
 
-提前在模块目录下创建好 `models.py`、`validate.py` 和 `api_drawing_prompt.py` 两个文件。
+提前在模块目录下创建好 `models.py`、`validate.py` 和 `api_drawing_prompt.py` 三个文件。
 
 ## 模型定义
 
