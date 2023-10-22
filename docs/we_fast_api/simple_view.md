@@ -132,6 +132,12 @@ my_module/
 {% endblock %}
 ```
 
+在模板的 `{% block main %}...{% endblock %}` 部分, 写了两个元素, 一个是 **form** 表单元素, 表单的里面有一个下拉选择框, 让用户可以根据提示词的类别来筛选数据；还有一个 `id="details-content"` 的 **div** 元素, 这个元素将用于动态加载从接口获取的每一条数据。
+
+在模板的 `{% block operate_bottom %}...{% endblock %}` 部分, 用了框架中定义的 **suspended-right** 元素, 这个元素里的内容会悬浮显示在窗口的右下角区域, 然后在里面创建一个 `id="newItem"` 的 **button** 按钮元素, 这个按钮给用户提供了一个创建新数据的入口。
+
+在模板的 `{% block javascript %}...{% endblock %}` 部分, 开头定义的三个变量 `loadSwitch` *(拖到到窗口底部时是否触发分页查询)* 、`loadSkip` *(分页查询时从第几条数据开始拉)* 和 `loadMark` *(控制分页请求同时只能发起一条)* 。 接下来是 `searchCategory` 参数, 这个是分页查询的筛选条件, 一般以 **searchXXX** 的规则命名, 其数据来源有两个, 一是模板加载时服务端给的值, 二是表单元素变更时动态设置的值, 并在 `loadData` 函数中将值添加到 `searchData` 里一并发送给服务端, 最后是在 `data['items'].forEach` 和 `$('.itemDetails').click` 两个代码段中定义每条数据的显示效果和点击事件。
+
 ### 添加分页查询路由
 
 编辑 `view_url.py` 文件, 添加一个路由函数 `page_my_module_drawing_prompt` 用于返回 `my_module/drawing-prompt.html` 模板文件：
