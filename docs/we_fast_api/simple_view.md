@@ -171,6 +171,8 @@ async def page_my_module_drawing_prompt(
     )
 ```
 
+上面为 `my_module/drawing-prompt.html` 这个分页查询模版添加了一个路由 `page_my_module_drawing_prompt` 函数, 并接收 **url** 中的 `category` 参数, 然后传到模版内, 替换模版中 `{{ category }}` 的内容。如果还有其他筛选参数, 应该按同样的方式传到前端模版中。
+
 ## 增删改操作
 
 编辑 `templates/my_module/drawing-prompt-edit.html` 文件, 我们将通过这个文件为 *创建绘图提示*、*删除绘图提示*、*更新绘图提示* 和 *读取绘图提示* 接口开发一个增删改操作页面, 前端代码如下：
@@ -328,6 +330,18 @@ async def page_my_module_drawing_prompt(
 </script>
 {% endblock %}
 ```
+
+在模板的 `{% block title %}...{% endblock %}` 部分, 根据服务端是否将 `id` 传输给了模版, 来显示不同的页面标题。
+
+在模板的 `{% block operate_left %}...{% endblock %}` 部分, 这是页面左上角区域, 实现了一个返回图标按钮, 用于返回到上一级页面, 而且返回的链接中包含了上级页面需要请求参数, 这样可以同时兼顾用户体验和数据一致性。
+
+在模板的 `{% block operate_right_top %}...{% endblock %}` 部分, 这是页面右上角区域, 根据服务端是否将 `id` 传输给了模版, 控制显示 *更新* 还是 *创建* 按钮, 就当前的页面来说, 两个按钮只是名称不同, 都是 `id="updateAndCreateItem"` 的元素。
+
+在模板的 `{% block main %}...{% endblock %}` 部分, 主要是个 **form** 表单元素, 表单的里面有一个下拉选择框, 让用户选择提示词的类别, 还有两个文本输入框, 让用户输入提示及其描述信息, 注意 `id` 属性的命名, 尽量与后端接口的参数名称一致, 这样代码会比较好维护。
+
+在模板的 `{% block operate_bottom %}...{% endblock %}` 部分, 这是悬浮显示在窗口的右下角区域, 先判断服务端是否将 `id` 传输给了模版, 只有 `id` 存在时才需要在里面创建一个 `id="deleteItem"` 的 **button** 按钮元素, 这个按钮给用户提供了删除数据的功能入口。
+
+在模板的 `{% block javascript %}...{% endblock %}` 部分, 这里同样是根据服务端是否将 `id` 传输给了模版。当有 `id` 时, 先通过 `utilAjax` 函数调用 *读取绘图提示* 接口加载页面需要显示的信息, 再实现 `id="updateAndCreateItem"` 的 *更新* 按钮点击事件 (调用 *更新绘图提示* 接口), 再实现 `id="deleteItem"` 的 *删除* 按钮点击事件 (调用 *删除绘图提示* 接口); 当没有 `id` 时, 则只需要实现 `id="updateAndCreateItem"` 的 *创建* 按钮点击事件 (调用 *创建绘图提示* 接口)。
 
 ### 添加增删改操作路由
 
