@@ -187,26 +187,26 @@ CMD ["python", "main.py"]
 使用这个 `Dockerfile` 来构建镜像:
 
 ```shell
-docker build -t demo:1.0.0 .
+docker build -t {服务名称}:1.0.0 .
 ```
 
 先检查服务在镜像容器内是否正常运行:
 
 ```shell
-docker run -t -i -v /{LOCAL_DIR}/files:/workspace/files -v /{LOCAL_DIR}/logs:/workspace/logs -p 8089:8083 --env-file .env --env-file apis/bases/.env demo:1.0.0
+docker run -t -i -v /{本地目录}/files:/workspace/files -v /{本地目录}/logs:/workspace/logs -p 8089:8083 --env-file .env --env-file apis/bases/.env {服务名称}:1.0.0
 ```
 
 | 构建参数 | 作用描述 |
 | ------- | ------- |
-| -v /{LOCAL_DIR}/files:/workspace/files | 持久化的文件存储路径 |
-| -v /{LOCAL_DIR}/logs:/workspace/logs | 持久化的日志存储路径 |
+| -v /{本地目录}/files:/workspace/files | 持久化的文件存储路径 |
+| -v /{本地目录}/logs:/workspace/logs | 持久化的日志存储路径 |
 | --env-file .env | 从文件中读取 `core` 模块的环境变量 |
 | --env-file apis/bases/.env | 从文件中读取 `bases` 模块的环境变量 |
 
 确认服务正常后, 添加 `-d` 参数将容器放后台运行:
 
 ```shell
-docker run -t -i -d -v /{LOCAL_DIR}/files:/workspace/files -v /{LOCAL_DIR}/logs:/workspace/logs -p 8089:8083 --env-file .env --env-file apis/bases/.env demo:1.0.0
+docker run -t -i -d -v /{本地目录}/files:/workspace/files -v /{本地目录}/logs:/workspace/logs -p 8089:8083 --env-file .env --env-file apis/bases/.env {服务名称}:1.0.0
 ```
 
 *最后请确认框架根路径下的 `.env` 配置文件中, 已经使用 `openssl rand -hex 32` 生成新密钥, 并设置成环境变量 `TOKEN_SECRET_KEY` 的新值。*
