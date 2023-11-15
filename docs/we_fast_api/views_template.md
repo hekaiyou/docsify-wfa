@@ -29,11 +29,11 @@ my_module/
     routing.py
 ```
 
-提前在 `views` 目录下创建好 `view_url.py` 和 `templates/my_module/items.html` 两个文件。
+提前在 `views` 目录下创建好 **view_url.py** 和 **templates/my_module/items.html** 两个文件。
 
 ### 路由配置
 
-编辑 `view_url.py` 文件, 这个文件是路由配置文件, 这里创建了路由函数 `page_my_module_items` 用于返回 `my_module/items.html` 模板文件:
+编辑 **view_url.py** 文件, 这个文件是路由配置文件, 这里创建了路由函数 `page_my_module_items()` 用于返回 **my_module/items.html** 模板文件:
 
 ```python
 from apis.templating import templates
@@ -48,11 +48,11 @@ async def page_my_module_items(request: dict = Depends(get_view_request)):
     return templates.TemplateResponse('my_module/items.html', {**request})
 ```
 
-函数 `page_my_module_items` 的参数 `request` 是一个字典, 包含 `Request` 类型的 `request` 键值与 `bases` 模块环境变量的 `settings` 键值。
+函数 `page_my_module_items()` 的参数 `request` 是一个字典, 包含 *Request* 类型的 `request` 键值与 *bases* 模块环境变量的 `settings` 键值。
 
 ### 模板内容
 
-编辑 `templates/my_module/items.html` 文件, 这个文件是使用 [Jinja2](https://docs.jinkan.org/docs/jinja2/) 模板语言编写的模板页面, 以这个页面为例, 它可以访问函数 `page_my_module_items` 返回的 `{**request}` 字典内容:
+编辑 **templates/my_module/items.html** 文件, 这个文件是使用 [Jinja2](https://docs.jinkan.org/docs/jinja2/) 模板语言编写的模板页面, 以这个页面为例, 它可以访问函数 `page_my_module_items()` 返回的 `{**request}` 字典内容:
 
 ```html
 {% extends 'core/navigation.html' %}
@@ -88,7 +88,7 @@ async def page_my_module_items(request: dict = Depends(get_view_request)):
 
 ## 添加导航栏
 
-编辑 `view_navigation.py` 文件, 这个文件用于控制导航栏的菜单项, 其中 `view_navigation_bar` 是一个固定参数名, 框架启动时会自动读取这个字典。
+编辑 **view_navigation.py** 文件, 这个文件用于控制导航栏的菜单项, 其中 `view_navigation_bar` 是一个固定参数名, 框架启动时会自动读取这个字典。
 
 - `path`: 页面访问路径
 - `permission`: 需要的权限列表, 空列表表示无权限, 只需登录即可访问
@@ -108,7 +108,7 @@ view_navigation_bar = [
 
 打开浏览器访问 [http://127.0.0.1:8083/](http://127.0.0.1:8083/) 路径, 完成用户登录操作后进入首页, 就可以看到导航栏中出现上面配置的菜单项。
 
-每个模块的 `view_navigation.py` 文件单独维护, 框架会负责汇总全部模块的配置。
+每个模块的 **view_navigation.py** 文件单独维护, 框架会负责汇总全部模块的配置。
 
 ## 设置首页
 
@@ -120,4 +120,4 @@ view_navigation_bar = [
 
 ## 资源文件
 
-放在 `my_module/views/static/` 目录下的文件夹及其文件均可以被 *http://127.0.0.1:8083/static/my_module/...* 路径访问, 以 `bases` 模块的 `views/static/jquery-3.6.0/jquery.min.js` 文件为例, 打开浏览器访问 [http://127.0.0.1:8083/static/bases/jquery-3.6.0/jquery.min.js](http://127.0.0.1:8083/static/bases/jquery-3.6.0/jquery.min.js) 路径就可以查看这个文件。
+放在 `my_module/views/static/` 目录下的文件夹及其文件均可以被 *http://127.0.0.1:8083/static/my_module/...* 路径访问, 以 `bases` 模块的 **views/static/jquery-3.6.0/jquery.min.js** 文件为例, 打开浏览器访问 [http://127.0.0.1:8083/static/bases/jquery-3.6.0/jquery.min.js](http://127.0.0.1:8083/static/bases/jquery-3.6.0/jquery.min.js) 路径就可以查看这个文件。

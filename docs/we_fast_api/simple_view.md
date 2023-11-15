@@ -24,11 +24,11 @@ my_module/
     validate.py
 ```
 
-提前在模块目录下创建好 `templates/my_module/drawing-prompt.html` 和 `templates/my_module/drawing-prompt-edit.html` 两个文件。
+提前在模块目录下创建好 **templates/my_module/drawing-prompt.html** 和 **templates/my_module/drawing-prompt-edit.html** 两个文件。
 
 ## 分页查询
 
-编辑 `templates/my_module/drawing-prompt.html` 文件, 我们将通过这个文件为 *读取绘图提示 (分页)* 接口开发一个分页查询页面, 前端代码如下：
+编辑 **templates/my_module/drawing-prompt.html** 文件, 我们将通过这个文件为 *读取绘图提示 (分页)* 接口开发一个分页查询页面, 前端代码如下：
 
 ```html
 {% extends 'core/navigation.html' %}
@@ -136,11 +136,11 @@ my_module/
 
 在模板的 `{% block operate_bottom %}...{% endblock %}` 部分, 用了框架中定义的 **suspended-right** 元素, 这个元素里的内容会悬浮显示在窗口的右下角区域, 然后在里面创建一个 `id="newItem"` 的 **button** 按钮元素, 这个按钮给用户提供了一个创建新数据的入口。
 
-在模板的 `{% block javascript %}...{% endblock %}` 部分, 开头定义的三个变量 `loadSwitch` *(拖到到窗口底部时是否触发分页查询)* 、`loadSkip` *(分页查询时从第几条数据开始拉)* 和 `loadMark` *(控制分页请求同时只能发起一条)* 。 接下来是 `searchCategory` 参数, 这个是分页查询的筛选条件, 一般以 **searchXXX** 的规则命名, 其数据来源有两个, 一是模板加载时服务端给的值, 二是表单元素变更时动态设置的值, 并在 `loadData` 函数中将值添加到 `searchData` 里一并发送给服务端, 最后是在 `data['items'].forEach` 和 `$('.itemDetails').click` 两个代码段中定义每条数据的显示效果和点击事件。
+在模板的 `{% block javascript %}...{% endblock %}` 部分, 开头定义的三个变量 `loadSwitch` *(拖到到窗口底部时是否触发分页查询)* 、`loadSkip` *(分页查询时从第几条数据开始拉)* 和 `loadMark` *(控制分页请求同时只能发起一条)* 。 接下来是 `searchCategory` 参数, 这个是分页查询的筛选条件, 一般以 **searchXXX** 的规则命名, 其数据来源有两个, 一是模板加载时服务端给的值, 二是表单元素变更时动态设置的值, 并在 `loadData()` 函数中将值添加到 `searchData` 里一并发送给服务端, 最后是在 `data['items'].forEach` 和 `$('.itemDetails').click` 两个代码段中定义每条数据的显示效果和点击事件。
 
 ### 添加分页查询路由
 
-编辑 `view_url.py` 文件, 添加一个路由函数 `page_my_module_drawing_prompt` 用于返回 `my_module/drawing-prompt.html` 模板文件：
+编辑 **view_url.py** 文件, 添加一个路由函数 `page_my_module_drawing_prompt()` 用于返回 **my_module/drawing-prompt.html** 模板文件：
 
 ```python
 from fastapi.responses import HTMLResponse
@@ -171,11 +171,11 @@ async def page_my_module_drawing_prompt(
     )
 ```
 
-上面为 `my_module/drawing-prompt.html` 这个分页查询模版添加了一个路由 `page_my_module_drawing_prompt` 函数, 并接收 **url** 中的 `category` 参数, 然后传到模版内, 替换模版中 `{{ category }}` 的内容。如果还有其他筛选参数, 应该按同样的方式传到前端模版中。
+上面为 **my_module/drawing-prompt.html** 这个分页查询模版添加了一个路由 `page_my_module_drawing_prompt()` 函数, 并接收 **url** 中的 `category` 参数, 然后传到模版内, 替换模版中 `{{ category }}` 的内容。如果还有其他筛选参数, 应该按同样的方式传到前端模版中。
 
 ## 增删改操作
 
-编辑 `templates/my_module/drawing-prompt-edit.html` 文件, 我们将通过这个文件为 *创建绘图提示*、*删除绘图提示*、*更新绘图提示* 和 *读取绘图提示* 接口开发一个增删改操作页面, 前端代码如下：
+编辑 **templates/my_module/drawing-prompt-edit.html** 文件, 我们将通过这个文件为 *创建绘图提示*、*删除绘图提示*、*更新绘图提示* 和 *读取绘图提示* 接口开发一个增删改操作页面, 前端代码如下：
 
 ```html
 {% extends 'core/navigation.html' %}
@@ -345,7 +345,7 @@ async def page_my_module_drawing_prompt(
 
 ### 添加增删改操作路由
 
-编辑 `view_url.py` 文件, 添加两个路由函数 `page_my_module_drawing_prompt_create` 和 `page_my_module_drawing_prompt_update` 用于返回 `my_module/drawing-prompt-edit.html` 模板文件的创建和更新部分：
+编辑 **view_url.py** 文件, 添加两个路由函数 `page_my_module_drawing_prompt_create()` 和 `page_my_module_drawing_prompt_update()` 用于返回 **my_module/drawing-prompt-edit.html** 模板文件的创建和更新部分：
 
 ```python
 from fastapi.responses import HTMLResponse
@@ -395,11 +395,11 @@ async def page_my_module_drawing_prompt_update(
     )
 ```
 
-上面为 `my_module/drawing-prompt-edit.html` 这个增删改操作模版添加了两个路由 `page_my_module_drawing_prompt_create` 函数和 `page_my_module_drawing_prompt_update` 函数。为了与分页查询模版保持一致, 这两个函数同样接收 **url** 中的 `category` 参数, 替换模版中 `{{ category }}` 的内容。另外一个路由 `page_my_module_drawing_prompt_update` 函数因为是数据更新页面, 所以需要接收 **url** 中的 `id` 参数, 替换模版中 `{{ id }}` 项, 这就和前面模板代码中的 `{% if id %}...{% else %}...{% endif %}` 逻辑片段匹配上了。
+上面为 **my_module/drawing-prompt-edit.html** 这个增删改操作模版添加了两个路由 `page_my_module_drawing_prompt_create()` 函数和 `page_my_module_drawing_prompt_update()` 函数。为了与分页查询模版保持一致, 这两个函数同样接收 **url** 中的 `category` 参数, 替换模版中 `{{ category }}` 的内容。另外一个路由 `page_my_module_drawing_prompt_update()` 函数因为是数据更新页面, 所以需要接收 **url** 中的 `id` 参数, 替换模版中 `{{ id }}` 项, 这就和前面模板代码中的 `{% if id %}...{% else %}...{% endif %}` 逻辑片段匹配上了。
 
 ## 导航和权限
 
-编辑 `view_navigation.py` 文件, 将分页查询页面添加到导航栏的菜单项中, 并设置分页查询页面的菜单项显示条件, 即用户必须的权限列表：
+编辑 **view_navigation.py** 文件, 将分页查询页面添加到导航栏的菜单项中, 并设置分页查询页面的菜单项显示条件, 即用户必须的权限列表：
 
 ```python
 view_navigation_bar = [
